@@ -15,7 +15,7 @@ public class Main {
     out.println("このプログラムは指定された月の祝日を表示します");
     out.print("月を指定して下さい: ");
     String str = br.readLine();
-    while (!(str.matches("[1-9]月?|1[0-2]月?|[一二三四五六七八九十]月?|十[一二]月?"))) {
+    while (!(str.matches("([1-9１-９]|1[０-２]|１[０-２]|[一二三四五六七八九十]|十[一二])月?"))) {
       out.print("やり直して下さい: ");
       str = br.readLine();
     }
@@ -23,57 +23,69 @@ public class Main {
   }
 
   public static int convInt(String str) {
-    if (str.matches("[1-9]月|1[0-2]月|[一二三四五六七八九十]月|十[一二]月")) {
+    if (str.matches("([1-9１-９]|1[0-2]|１[０-２]|[一二三四五六七八九十]|十[一二])月")) {
       str = str.replaceAll("月", "");
     }
 
-    int num = -1;
+    int num = 0;
     switch (str) {
       case "1":
+      case "１":
       case "一":
         num = 1;
         break;
       case "2":
+      case "２":
       case "二":
         num = 2;
         break;
       case "3":
+      case "３":
       case "三":
         num = 3;
         break;
       case "4":
+      case "４":
       case "四":
         num = 4;
         break;
       case "5":
+      case "５":
       case "五":
         num = 5;
         break;
       case "6":
+      case "６":
       case "六":
         num = 6;
         break;
       case "7":
+      case "７":
       case "七":
         num = 7;
         break;
       case "8":
+      case "８":
       case "八":
         num = 8;
         break;
       case "9":
+      case "９":
       case "九":
         num = 9;
         break;
       case "10":
+      case "１０":
       case "十":
         num = 10;
         break;
       case "11":
+      case "１１":
       case "十一":
         num = 11;
         break;
       case "12":
+      case "１２":
       case "十二":
         num = 12;
         break;

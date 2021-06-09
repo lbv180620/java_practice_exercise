@@ -18,7 +18,7 @@ public class BaseballGame {
   }
 
   public void playBall() throws IOException {
-    out.printf("先行: %s\n", battingFirst.getTeamName());
+    out.printf("先攻:%s、後攻:%s\n", battingFirst.getTeamName(), fieldingFirst.getTeamName());
     out.println("プレイボール！");
     out.println("---------------------");
 

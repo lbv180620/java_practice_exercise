@@ -5,6 +5,7 @@ import java.io.*;
 public class Main {
   public static void main(String[] args) throws IOException {
     int[] nums = new int[10];
+    int max = 0;
 
     BufferedReader br = new BufferedReader(new InputStreamReader(in));
     for (int i = 0; i < 10; i++) {
@@ -16,9 +17,31 @@ public class Main {
       }
       nums[i] = Integer.valueOf(input);
     }
-  }
 
-  public static int sort() {
-    return 0;
+    out.println("---------------");
+
+    out.println("~~バブルソート~~");
+
+    nums = Sort.bubbleSort(nums);
+    max = nums[nums.length - 1];
+    out.printf("最大値は%d\n", max);
+
+    out.println("---------------");
+
+    out.println("~~選択ソート~~");
+
+    nums = Sort.selectionSort(nums);
+    max = nums[nums.length - 1];
+    out.printf("最大値は%d\n", max);
+
+    out.println("---------------");
+
+    out.println("~~挿入ソート~~");
+
+    nums = Sort.insertionSort(nums);
+    max = nums[nums.length - 1];
+    out.printf("最大値は%d\n", max);
+
+    out.println("---------------");
   }
 }

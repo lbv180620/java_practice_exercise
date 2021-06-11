@@ -53,4 +53,38 @@ public class Sort {
     // 10 20k 30 40 50s : 30
     // s=1 2 3 4 5
     // k=0 1 0 -1 2 1 3 2 1
+
+    public static int[] quickSort(int[] ary) {
+        quick(ary, 0, ary.length - 1);
+        return ary;
+    }
+
+    private static void quick(int[] ary, int left, int right) {
+        int tmp;
+        int l = left;
+        int r = right;
+        int pivot = ary[(l + r) / 2];
+
+        if (l >= r) {
+            return;
+        }
+
+        while (l <= r) {
+            while (ary[l] < pivot) {
+                l++;
+            }
+            while (ary[r] > pivot) {
+                r--;
+            }
+            if (l <= r) {
+                tmp = ary[l];
+                ary[l] = ary[r];
+                ary[r] = tmp;
+                l++;
+                r--;
+            }
+        }
+        quick(ary, left, r);
+        quick(ary, l, right);
+    }
 }

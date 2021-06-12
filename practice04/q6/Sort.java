@@ -88,3 +88,6 @@ public class Sort {
         quick(ary, l, right);
     }
 }
+
+// publicなメソッド
+// フィールド、コンストラクタは無し

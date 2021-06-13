@@ -17,6 +17,7 @@ public class Main {
 
       Class<? extends Sort> c = Sort.class;
       Method m;
+      int count = 0;
 
       for (String key : map.keySet()) {
         for (int i = 0; i < ary.length; i++) {
@@ -41,7 +42,9 @@ public class Main {
         out.printf("最大値は%d\n", max);
         out.println("処理時間は" + (end - start) + "ミリ秒");
 
-        out.println("---------------");
+        count++;
+        String line = (count == map.size()) ? " " : "---------------";
+        out.println(line);
       }
     } catch (IOException e) {
       e.printStackTrace();

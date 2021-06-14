@@ -12,9 +12,6 @@ public class Sort {
         }
         return ary;
     }
-    // 10s 20k 30 40 50 : 30
-    // s=4 3 2 1 0
-    // k=0 1 2 3 4 0 1 2 3 0 1 2 0 1
 
     public static int[] selectionSort(int[] ary) {
         int tmp = 0;
@@ -42,7 +39,7 @@ public class Sort {
         int tmp = 0;
         for (int s = 1; s < ary.length; s++) {
             tmp = ary[s];
-            int k = 0;
+            int k;
             for (k = s - 1; k >= 0 && ary[k] > tmp; k--) {
                 ary[k + 1] = ary[k];
             }
@@ -50,9 +47,9 @@ public class Sort {
         }
         return ary;
     }
-    // 10 20k 30 40 50s : 30
-    // s=1 2 3 4 5
-    // k=0 1 0 -1 2 1 3 2 1
+    // 1 2k 3 4 5s : 3
+    // s=1 2 3 4
+    // k=0 1 0 -1 2 3 2 1
 
     public static int[] quickSort(int[] ary) {
         quick(ary, 0, ary.length - 1);
@@ -86,6 +83,33 @@ public class Sort {
         }
         quick(ary, left, r);
         quick(ary, l, right);
+    }
+
+    public static int[] shellSort(int[] ary) {
+        int n = ary.length;
+        int s, k, tmp;
+        int h = 1;
+
+        while (h <= n / 3) {
+            h = 3 * h + 1;
+        }
+
+        while (h > 0) {
+            for (s = h; s < n; s++) {
+                tmp = ary[s];
+                for (k = s - h; k >= 0 && ary[k] > tmp; k -= h) {
+                    ary[h + k] = ary[k];
+                }
+                ary[h + k] = tmp;
+            }
+            h = (h - 1) / 3;
+        }
+
+        return ary;
+    }
+
+    public static int[] mergeSort(int[] ary) {
+        return ary;
     }
 }
 

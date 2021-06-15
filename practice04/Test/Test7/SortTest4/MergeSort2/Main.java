@@ -18,24 +18,60 @@ public class Main {
             return;
         }
         int m = (left + right) / 2;
-        divide(ary, left, m);
-        divide(ary, m + 1, right);
-        merge(ary, left, m, right);
-    }
 
-    private static void merge(int[] ary, int left, int m, int right) {
         int n1 = m - left + 1; // n1 + n2 = ary.length
         int n2 = right - m;
         int[] L = new int[n1]; // mよりも前半部分を格納
         int[] R = new int[n2]; // mよりも後半部分を格納
 
-        for (int i = 0; i < n1; i++) {　// 配列のコピー System.arraycopy
-            L[i] = ary[left + i];
+        System.arraycopy(ary, left, L, 0, n1);
+        System.arraycopy(ary, right - m, R, 0, n2);
+
+        divide(L, 0, L.length - 1);
+        divide(R, 0, R.length - 1);
+
+        List<Integer> newAry = new ArrayList<>();
+
+        int i = 0;
+        int j = 0;
+        while (i < n1 && j < n2) {
+            int val1 = L[i];
+            int val2 = R[j];
+
+            if (val1 <= val2) {
+                newAry.add(L[i]);
+                i++;
+            } else {
+                newAry.add(R[j]);
+                j++;
+            }
         }
 
-        for (int j = 0; j < n2; j++) {
-            R[j] = ary[m + j + 1];
+        while (i < n1) {
+            newAry.add(L[i]);
+            i++;
         }
 
+        while (j < n2) {
+            newAry.add(R[j]);
+            j++;
+        }
+
+        for (int k = 0; k < ary.length; k++) {
+            ary[k] = newAry.get(k);
+        }
     }
+
+    // private static void merge(int[] ary, int left, int m, int right) {
+
+    // }
 }
+
+// 4 1 5m 3 2
+// 0 1 2 3 4
+// left=0
+// right=4
+// m=2
+// L[3]{4 1 5}
+// R[2]{3 2}
+//

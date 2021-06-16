@@ -1,3 +1,5 @@
+import java.util.*;
+
 public class Sort {
     public static int[] bubbleSort(int[] ary) {
         int tmp = 0;
@@ -109,9 +111,53 @@ public class Sort {
     }
 
     public static int[] mergeSort(int[] ary) {
+        int n = ary.length;
+
+        if (n <= 1) {
+            return ary;
+        }
+
+        int m = n / 2;
+
+        int[] L = new int[n - m];
+        int[] R = new int[m];
+
+        System.arraycopy(ary, 0, L, 0, n - m);
+        System.arraycopy(ary, n - m, R, 0, m);
+
+        mergeSort(L);
+        mergeSort(R);
+
+        List<Integer> newAry = new ArrayList<>();
+
+        int nL = L.length;
+        int nR = R.length;
+
+        int i = 0, j = 0;
+        while (i < nL && j < nR) {
+            if (L[i] <= R[j]) {
+                newAry.add(L[i]);
+                i++;
+            } else {
+                newAry.add(R[j]);
+                j++;
+            }
+        }
+
+        while (i < nL) {
+            newAry.add(L[i]);
+            i++;
+        }
+
+        while (j < nR) {
+            newAry.add(R[j]);
+            j++;
+        }
+
+        for (int k = 0; k < n; k++) {
+            ary[k] = newAry.get(k);
+        }
+
         return ary;
     }
 }
-
-// publicなメソッド
-// フィールド、コンストラクタは無し

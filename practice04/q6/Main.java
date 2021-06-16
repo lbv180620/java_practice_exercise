@@ -15,6 +15,7 @@ public class Main {
       map.put("挿入ソート", "insertionSort");
       map.put("クイックソート", "quickSort");
       map.put("シェルソート", "shellSort");
+      map.put("マージソート", "mergeSort");
 
       Class<? extends Sort> c = Sort.class;
       Method m;

@@ -18,9 +18,12 @@ public class Main {
         if (left >= right) {
             return;
         }
+
         int m = (left + right) / 2;
+
         divide(ary, left, m);
         divide(ary, m + 1, right);
+
         merge(ary, left, m, right);
     }
 
@@ -38,14 +41,38 @@ public class Main {
             R[j] = ary[m + j + 1];
         }
 
+        int i = 0, j = 0;
+        int k = left;
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
+                ary[k] = L[i];
+                i++;
+            } else {
+                ary[k] = R[j];
+                j++;
+            }
+            k++;
+        }
+
+        while (i < n1) {
+            ary[k] = L[i];
+            i++;
+            k++;
+        }
+
+        while (j < n2) {
+            ary[k] = R[j];
+            j++;
+            k++;
+        }
     }
 
 }
 
-// 3| 5| 2| 1 |4
-// 0 1 2 3 4
-// L[3] {3 5 2}
-// R[2] {1 4}
+// {7} {2} {6 4} {3 8 5 1}
+// 0 1 2 3 4 5 6 7
+// L[1] {7}
+// R[1] {2}
 // left=0
-// right=4
-// m=2
+// right=1
+// m=0

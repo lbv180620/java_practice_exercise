@@ -162,6 +162,39 @@ public class Sort {
     }
 
     public static int[] heapSort(int[] ary) {
+        int n = ary.length;
+
+        for (int i = n / 2 - 1; i >= 0; i--) {
+            heap(ary, n, i);
+        }
+
+        for (int j = n - 1; j >= 0; j--) {
+            int tmp = ary[0];
+            ary[0] = ary[j];
+            ary[j] = tmp;
+            heap(ary, j, 0);
+        }
+
         return ary;
+    }
+
+    private static void heap(int[] ary, int n, int root) {
+        int largest = root;
+        int l = 2 * root + 1;
+        int r = 2 * root + 2;
+
+        if (l < n && ary[l] > ary[largest]) {
+            largest = l;
+        }
+        if (r < n && ary[r] > ary[largest]) {
+            largest = r;
+        }
+
+        if (largest != root) {
+            int swap = ary[root];
+            ary[root] = ary[largest];
+            ary[largest] = swap;
+            heap(ary, n, largest);
+        }
     }
 }

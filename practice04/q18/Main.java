@@ -22,7 +22,7 @@ public class Main {
 
     public static long fibo(int n) {
         if (memo[n] != -1L) {
-            return memo[n];
+            return memo[n]; // すでに確定している項は飛ばす
         }
 
         if (n < 2) {
@@ -37,3 +37,12 @@ public class Main {
 
 // f(0) = 0, f(1) = 1
 // f(n) = f(n-1) + f(n -2) n>=2
+
+// 0 1 1 2 3 n=4
+// 0 1 2 3 4
+// m(4) = 2 + 1 = 3
+// m(3) = 1 + 1 = 2
+// m(2) = 1 + 0 = 1
+// m(1) = 1
+// m(0) = 0
+// m(2) = 1

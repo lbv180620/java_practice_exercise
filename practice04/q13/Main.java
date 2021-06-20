@@ -21,11 +21,11 @@ public class Main {
 
     public static void printPrimeFactorization(int num) {
         StringBuilder sb = new StringBuilder();
-
+        int init = num;
         primeFactorization(num, sb);
 
         String result = sb.toString();
-        out.println(result);
+        out.println(init + " = " + result);
 
     }
 
@@ -37,7 +37,7 @@ public class Main {
 
         if (num % 2 == 0) {
             num /= 2;
-            sb.append("2 ");
+            sb.append("2 * ");
             primeFactorization(num, sb);
             return;
         }
@@ -49,7 +49,7 @@ public class Main {
 
             if (num % p == 0) {
                 num /= p;
-                sb.append(String.valueOf(p) + " ");
+                sb.append(String.valueOf(p) + " * ");
                 primeFactorization(num, sb);
                 return;
             }

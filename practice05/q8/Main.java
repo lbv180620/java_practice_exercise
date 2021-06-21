@@ -60,7 +60,7 @@ public class Main {
         }
     }
 
-    public static void selection(List<Integer> list) {
+    private static void selection(List<Integer> list) {
         for (Integer i = 0; i < list.size(); i++) {
             Integer min = i;
             Integer j;
